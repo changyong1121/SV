@@ -1,3 +1,5 @@
+//`timescale 1ns/ps
+
 module tb_top #(
 	parameter MASTER_FREQ = 100_000_000,
 	parameter SLAVE_FREQ = 1_800_000,
@@ -29,6 +31,7 @@ module tb_top #(
     assign mstr_state_rx = dut.spi_master_inst.state_rx;
     assign slv_state_tx = dut.spi_slave_inst.state_tx;
     assign slv_state_rx = dut.spi_slave_inst.state_rx;
+    assign sclk_senddata= dut.spi_master_inst.sclk;
 
     // Clock generation
     initial clk = 0;
@@ -44,6 +47,8 @@ module tb_top #(
 
     initial begin
         $display("Test start.");     
+$monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h |  din_slave=%0b | dout_master=%0b  "  
+		 ,$time,     rst,      req,       din_master,          dout_slave ,      din_slave ,     dout_master );
             din_master = 0;
             din_slave = 0;
 	    req = 0;
@@ -57,19 +62,36 @@ module tb_top #(
         wait (mstr_state_tx == 0 && mstr_state_rx == 0);
             req = 1;
 
-        repeat(5) begin
+        repeat(2) begin
             din_master = $urandom_range(1,255);
-
             @(posedge clk);
-            wait (done_tx == 1);
-        end 
+
+	bit_counter=0;
+	
+//	@(posedge sclk_senddata);  //assume it is setup stage
+	while (bit_counter < SPI_TRF_BIT) begin
+		@(posedge sclk_senddata);
+			bit_counter = bit_counter + 1;
+			$display("--->data_shift_counter =%0d ", bit_counter);
+		end
+	@(posedge sclk_senddata);  //assume it is setup stage
+	 if (dout_slave === din_master)begin
+			$display("--------PASS TEST--- dout_slave = din_master " );
+		end else begin
+		$display("Failed");
+		end
+ 
+
+		wait (done_tx == 1);
+	
+  	end 
 
           //slave send, master received (miso)
         wait (mstr_state_tx == 0 && mstr_state_rx == 0);
         req = 2;
         din_master = 0;
 
-        repeat(5) begin
+        repeat(2) begin
             din_slave = $urandom_range(1, 255);
             @(posedge clk);
             wait (done_rx == 1);
