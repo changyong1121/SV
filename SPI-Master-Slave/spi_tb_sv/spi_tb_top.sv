@@ -37,26 +37,24 @@ module tb_top #(
 
     initial begin
         $display("Test start"); 
-	$monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0b   |   dout_master=%0b |  din_slave=%0b | dout_slave=%0b  "  
-		 ,$time,     rst,      req,       din_master,          dout_master ,      din_slave ,     dout_slave );  
+	$monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0b   |   dout_slave=%0b |  din_slave=%0b | dout_master=%0b  "  
+		 ,$time,     rst,      req,       din_master,          dout_slave ,      din_slave ,     dout_master );  
             din_master = 0; 
             din_slave = 0;
 	    req = 0;
 
         @(negedge rst);
             #10;
-        // master send, slave received (mosi)
+        // Test Case ID 2: Dout_slave check  ->>> master send, slave received (mosi)
             req = 1;
             wait_duration = 10;
             din_slave = 0;
    
         repeat(2) begin
-		din_master = 10010010;
-            //din_master = $urandom_range(1000, 5000);
+            din_master = $urandom_range(8'b100_000_01, 8'b111_111_11);
             @(posedge clk);
-      
-
-	//counter
+     
+		//counter
 	bit_counter=0;
 	
         assign sclk_senddata= dut.spi_master_inst.sclk;
@@ -75,17 +73,39 @@ module tb_top #(
 	end
 
 ////////////////////////////////////////////////////////////////////////////////////////	
- 	
-          //slave send, master received (miso)
+ 	// Test Case ID 1: Dout_master check  ->>> slave send, master received (miso)
         #20;
         req = 2;
         din_master = 0;
 
         repeat(2) begin
-            din_slave = $urandom_range(6000, 8000);
+            din_slave = $urandom_range(8'b100_000_01, 8'b111_111_11);
             @(posedge clk);
+		//counter
+	bit_counter=0;
+	
+        assign sclk_senddata= dut.spi_master_inst.sclk;
+	while (bit_counter <= SPI_TRF_BIT) begin
+		@(posedge sclk_senddata);
+			bit_counter = bit_counter + 1;
+			$display("bitcounter =%0d ", bit_counter);
+		end
+	
+	 if (dout_slave === din_master)begin
+			$display("--------PASS TEST--- dout_master = din_slave " );
+		end else begin
+		$display("Failed");
+		end
             wait (done_rx == 1);
         end 
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////	
+
 
             // full duplex
          #20;
