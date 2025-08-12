@@ -1,6 +1,3 @@
-`timescale 1ps/1ps
-
-
 module tb_top #(
 	parameter MASTER_FREQ = 100_000_000,
 	parameter SLAVE_FREQ = 1_800_000,
@@ -10,7 +7,7 @@ module tb_top #(
 
 	logic clk;
 	logic rst;
-   	logic [1:0] req;
+    logic [1:0] req;
 	logic [7:0] wait_duration;
 	logic [(SPI_TRF_BIT-1):0] din_master;
 	logic [(SPI_TRF_BIT-1):0] din_slave;
@@ -22,6 +19,16 @@ module tb_top #(
 	int sclk_senddata;	
 
     spi_top dut (.*);
+
+    logic [1:0] mstr_state_tx;
+    logic mstr_state_rx;
+    logic slv_state_tx;
+    logic slv_state_rx;
+
+    assign mstr_state_tx = dut.spi_master_inst.state_tx[1:0];
+    assign mstr_state_rx = dut.spi_master_inst.state_rx;
+    assign slv_state_tx = dut.spi_slave_inst.state_tx;
+    assign slv_state_rx = dut.spi_slave_inst.state_rx;
 
     // Clock generation
     initial clk = 0;
@@ -36,88 +43,56 @@ module tb_top #(
     end
 
     initial begin
-        $display("Test start"); 
-	$monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0b   |   dout_slave=%0b |  din_slave=%0b | dout_master=%0b  "  
-		 ,$time,     rst,      req,       din_master,          dout_slave ,      din_slave ,     dout_master );  
-            din_master = 0; 
+        $display("Test start.");     
+            din_master = 0;
             din_slave = 0;
 	    req = 0;
 
         @(negedge rst);
             #10;
-        // Test Case ID 2: Dout_slave check  ->>> master send, slave received (mosi)
-            req = 1;
+        // master send, slave received (mosi)
             wait_duration = 10;
             din_slave = 0;
-   
-        repeat(2) begin
-            din_master = $urandom_range(8'b100_000_01, 8'b111_111_11);
-            @(posedge clk);
-     
-		//counter
-	bit_counter=0;
-	
-        assign sclk_senddata= dut.spi_master_inst.sclk;
-	while (bit_counter <= SPI_TRF_BIT) begin
-		@(posedge sclk_senddata);
-			bit_counter = bit_counter + 1;
-			$display("bitcounter =%0d ", bit_counter);
-		end
-	
-	 if (dout_slave === din_master)begin
-			$display("--------PASS TEST--- dout_slave = din_master " );
-		end else begin
-		$display("Failed");
-		end
-      	wait (done_tx == 1);
-	end
 
-////////////////////////////////////////////////////////////////////////////////////////	
- 	// Test Case ID 1: Dout_master check  ->>> slave send, master received (miso)
-        #20;
+        wait (mstr_state_tx == 0 && mstr_state_rx == 0);
+            req = 1;
+
+        repeat(5) begin
+            din_master = $urandom_range(1,255);
+
+            @(posedge clk);
+            wait (done_tx == 1);
+        end 
+
+          //slave send, master received (miso)
+        wait (mstr_state_tx == 0 && mstr_state_rx == 0);
         req = 2;
         din_master = 0;
 
-        repeat(2) begin
-            din_slave = $urandom_range(8'b100_000_01, 8'b111_111_11);
+        repeat(5) begin
+            din_slave = $urandom_range(1, 255);
             @(posedge clk);
-		//counter
-	bit_counter=0;
-	
-        assign sclk_senddata= dut.spi_master_inst.sclk;
-	while (bit_counter <= SPI_TRF_BIT) begin
-		@(posedge sclk_senddata);
-			bit_counter = bit_counter + 1;
-			$display("bitcounter =%0d ", bit_counter);
-		end
-	
-	 if (dout_slave === din_master)begin
-			$display("--------PASS TEST--- dout_master = din_slave " );
-		end else begin
-		$display("Failed");
-		end
             wait (done_rx == 1);
         end 
 
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////	
-
-
-            // full duplex
-         #20;
+        // full duplex
+        wait  (mstr_state_tx == 0 && mstr_state_rx == 0 && slv_state_tx == 0 && slv_state_rx == 0);
         req = 3;
 
-        repeat(2) begin
-            din_slave = $urandom_range(6000, 8000);
-            din_master = $urandom_range(1000, 5000);
+        repeat(5) begin
+            fork
+                begin
+                    din_slave = $urandom_range(1, 255);
+                    wait (done_rx == 1);
+                end
+                
+                begin
+                    din_master = $urandom_range(1, 255);
+                    wait (done_tx == 1);                    
+                end
+            join
 
             @(posedge clk);
-            wait (done_rx == 1);
-            wait (done_tx == 1);
         end 
 
         $display("Test complete.");
@@ -128,18 +103,79 @@ module tb_top #(
         $fsdbDumpfile("spi_tb.fsdb");
         $fsdbDumpvars(0, tb_top, "+all");
     end
-/*
-     // Assertion
-     property chk_dout_slave;
-        @(posedge sclk) disable iff (req != 1)
-        `
-        
-           
-    endproperty
+
+ 
+    logic [7:0] expected_dout_slave;
+    logic [7:0] expected_dout_master;
+    logic [3:0] slv_bit_received_count;     
+    logic [3:0] mstr_bit_received_count; 
+	logic sclk;
+    logic sclk_posedge_mstr;
+    logic sclk_negedge_mstr;
+    logic sclk_posedge_slv;
+    logic sclk_negedge_slv;
+
+    logic [7:0] mstr_bit_flag;
+    logic [7:0] slv_bit_flag;
+
+    assign sclk = dut.sclk_generator_inst.sclk;
+    assign sclk_posedge_mstr = dut.spi_master_inst.sclk_posedge;
+    assign sclk_negedge_mstr = dut.spi_master_inst.sclk_negedge;
+    assign sclk_posedge_slv = dut.spi_slave_inst.sclk_posedge;
+    assign sclk_negedge_slv = dut.spi_slave_inst.sclk_negedge;
+    
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            expected_dout_slave <= 8'b0;
+            expected_dout_master <= 8'b0;
+            mstr_bit_received_count  <= 0;
+            slv_bit_received_count  <= 0;
+        end else begin
+            if ((mstr_state_tx == 2) && (req == 1 | req == 3) && sclk_negedge_mstr && slv_bit_received_count < 8) begin
+                expected_dout_slave <= (expected_dout_slave << 1) | din_master[7 - slv_bit_received_count];
+                slv_bit_received_count  <= slv_bit_received_count + 1; 
+            end 
+
+            if ((slv_state_tx == 1) && (req == 2 | req == 3) && sclk_negedge_slv && mstr_bit_received_count < 8) begin
+                expected_dout_master <= (expected_dout_master << 1) | din_slave[7 - mstr_bit_received_count];
+                mstr_bit_received_count  <= mstr_bit_received_count + 1;      
+            end
+
+            if (done_tx) begin
+                slv_bit_received_count  <= 0;
+            end
+
+            if (done_rx) begin
+                mstr_bit_received_count  <= 0;
+            end
+        end
+    end
 
 
-  ASST_CHK_DOUT_SLAVE: assert property (chk_dout_slave);
-*/
+
+    genvar i;
+    generate
+    for (i = 0; i < 8; i++) begin : gen_chk_dout_slave
+        property chk_dout_slave;
+            @(negedge sclk) disable iff (!(req == 1 || req == 3))
+                dout_slave[i] |-> expected_dout_slave[i];
+        endproperty
+
+        assert property (chk_dout_slave)
+            else $error("Mismatch at bit %0d: dout_slave != expected_dout_slave", i);
+
+        property chk_dout_mstr;
+            @(negedge sclk) disable iff (!(req == 2 || req == 3))
+                dout_master[i] |-> expected_dout_master[i];
+        endproperty
+
+        assert property (chk_dout_mstr)
+            else $error("Mismatch at bit %0d: dmstr_slave != expected_dmstr_slave", i);
+
+
+    end
+    endgenerate
+
 endmodule
 
     
