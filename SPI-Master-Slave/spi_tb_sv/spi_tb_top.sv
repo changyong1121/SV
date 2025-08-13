@@ -34,7 +34,7 @@ module tb_top #(
     assign sclk_senddata= dut.spi_master_inst.sclk;
 
 
-	task check_dout();
+	task check_dout_mosi();
 	bit_counter=0;
 	while (bit_counter < SPI_TRF_BIT) begin
 		@(posedge sclk_senddata);
@@ -42,12 +42,35 @@ module tb_top #(
 			$display("--->data_shift_counter =%0d ", bit_counter);
 		end
 	@(posedge sclk_senddata);  //assume it is setup stage
-	 if (dout_slave === din_master)begin
-			$display("-------------------------------------------PASS TEST------------------------------------------- dout = din " );
-		end else begin
+		if (bit_counter==8) begin
+	 		if (dout_slave === din_master)begin
+			$display("---------------------------------------PASS TEST--REQ=2'01--MOSI--dout_slave = din_master -----------------------------------------  " );
+			end 
+		end	else begin
 		$display("Failed");
 		end
 	endtask
+
+
+	task check_dout_miso();
+	bit_counter=0;
+	while (bit_counter < SPI_TRF_BIT) begin
+		@(posedge sclk_senddata);
+			bit_counter = bit_counter + 1;
+			$display("--->data_shift_counter =%0d ", bit_counter);
+		end
+	@(posedge sclk_senddata);  //assume it is setup stage
+		if (bit_counter==8) begin
+	 		if (dout_master === din_slave)begin
+			$display("---------------------------------------PASS TEST--REQ=2'10--MISO--dout_master = din_slave----------------------------------------- " );
+			end 
+		end	else begin
+		$display("Failed");
+		end
+	endtask
+
+
+
 
 
     // Clock generation
@@ -64,7 +87,7 @@ module tb_top #(
 
     initial begin
         $display("Test start.");     
-$monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h |  din_slave=%0b | dout_master=%0b  "  
+$monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h |  din_slave=%0h | dout_master=%0h  "  
 		 ,$time,     rst,      req,       din_master,          dout_slave ,      din_slave ,     dout_master );
             din_master = 0;
             din_slave = 0;
@@ -83,7 +106,7 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
             din_master = $urandom_range(1,255);
             @(posedge clk);
 
-	 check_dout();
+	 check_dout_mosi();
 
 		wait (done_tx == 1);	
   	end 
@@ -97,7 +120,7 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
             din_slave = $urandom_range(1, 255);
             @(posedge clk);
 
-	check_dout();
+	check_dout_miso();
             wait (done_rx == 1);
         end 
 
