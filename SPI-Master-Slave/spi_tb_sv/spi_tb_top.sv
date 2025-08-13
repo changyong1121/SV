@@ -79,7 +79,7 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
         wait (mstr_state_tx == 0 && mstr_state_rx == 0);
             req = 1;
 
-        repeat(2) begin
+        repeat(5) begin
             din_master = $urandom_range(1,255);
             @(posedge clk);
 
@@ -93,7 +93,7 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
         req = 2;
         din_master = 0;
 
-        repeat(2) begin
+        repeat(5) begin
             din_slave = $urandom_range(1, 255);
             @(posedge clk);
 
@@ -140,16 +140,15 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
     logic sclk_negedge_mstr;
     logic sclk_posedge_slv;
     logic sclk_negedge_slv;
-
-    logic [7:0] mstr_bit_flag;
-    logic [7:0] slv_bit_flag;
+    logic cs;
 
     assign sclk = dut.sclk_generator_inst.sclk;
     assign sclk_posedge_mstr = dut.spi_master_inst.sclk_posedge;
     assign sclk_negedge_mstr = dut.spi_master_inst.sclk_negedge;
     assign sclk_posedge_slv = dut.spi_slave_inst.sclk_posedge;
     assign sclk_negedge_slv = dut.spi_slave_inst.sclk_negedge;
-    
+    assign cs = dut.spi_master_inst.cs;
+
     always_ff @(posedge clk) begin
         if (rst) begin
             expected_dout_slave <= 8'b0;
@@ -169,9 +168,14 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
 
             if (done_tx) begin
                 slv_bit_received_count  <= 0;
+
+                if (slv_state_rx && cs) begin
+                    expected_dout_slave <= 0;
+                end
             end
 
             if (done_rx) begin
+                //expected_dout_master <= 0;
                 mstr_bit_received_count  <= 0;
             end
         end
@@ -186,17 +190,23 @@ $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0h   |   dout_slave=%0h | 
             @(negedge sclk) disable iff (!(req == 1 || req == 3))
                 dout_slave[i] |-> expected_dout_slave[i];
         endproperty
-
-        assert property (chk_dout_slave)
-            else $error("Mismatch at bit %0d: dout_slave != expected_dout_slave", i);
-
+ 
         property chk_dout_mstr;
             @(negedge sclk) disable iff (!(req == 2 || req == 3))
                 dout_master[i] |-> expected_dout_master[i];
         endproperty
-
+        
+        //property chk_master_tx_done;
+        //    @(negedge sclk) disable iff (!(req == 2 || req == 3))
+            
+        //assertion check on when slave send, master received
         assert property (chk_dout_mstr)
             else $error("Mismatch at bit %0d: dmstr_slave != expected_dmstr_slave", i);
+
+        //assertion check on when master send, slave received        
+        assert property (chk_dout_slave)
+            else $error("Mismatch at bit %0d: dout_slave != expected_dout_slave", i);
+
 
 
     end
