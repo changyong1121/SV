@@ -86,9 +86,15 @@ module tb_top #(
 	endtask
 
 
-
-
-
+   covergroup cg @(posedge clk);
+	coverpoint rst;
+	coverpoint req;
+	coverpoint din_master;
+	coverpoint din_slave;
+	coverpoint dout_master;
+	coverpoint dout_slave;
+   endgroup
+	cg cg_inst;
     // Clock generation
     initial clk = 0;
     always #5 clk = ~clk;
@@ -99,7 +105,7 @@ module tb_top #(
         $display("Test start.");     
         $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0b   |   dout_slave=%0b |  din_slave=%0b | dout_master=%0b  "  
 		 ,$time,     rst,      req,       din_master,          dout_slave ,      din_slave ,     dout_master );
-        
+        cg_inst = new(); 
         rst = 1;
         #15;
         rst = 0;
@@ -118,7 +124,7 @@ module tb_top #(
             wait_duration = WAIT_DURATION;
             din_slave = 0;
 
-        repeat(2) begin
+        repeat(200) begin
             din_master = $urandom_range(1,255);
             @(posedge clk);
 
@@ -134,7 +140,7 @@ module tb_top #(
         req = 2;
         din_master = 0;
 
-        repeat(2) begin
+        repeat(200) begin
             din_slave = $urandom_range(1, 255);
             @(posedge clk);
 
@@ -147,7 +153,7 @@ module tb_top #(
         $display("full duplex, req = 2'b11");     
         req = 3;
 
-        repeat(1) begin
+        repeat(200) begin
             fork
                 begin
                     din_slave = $urandom_range(1, 255);
@@ -179,6 +185,7 @@ module tb_top #(
         
         #20;
         $display("Test complete.");
+	$display ("Cumulative Coverage = %0.2f %%", cg_inst.get_coverage());
         $finish;
     end
 
