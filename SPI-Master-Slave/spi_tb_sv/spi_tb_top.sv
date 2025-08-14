@@ -171,7 +171,16 @@ module tb_top #(
             @(posedge clk);
         end 
     
-   
+        wait  (req_enable);
+        $display("No operation, req = 2'b00");     
+        req = 0;
+        repeat (1) begin
+            wait_duration = $urandom_range(10,50);
+            din_master = $urandom_range(1, 255);
+            din_slave = $urandom_range(1, 255);
+            repeat (200) @(posedge clk);
+        end
+
         // master send, rst asserted
         wait  (req_enable);
         $display("master send slave received, req = 2'b01"); 
@@ -357,6 +366,11 @@ module tb_top #(
                 rst |-> (mstr_state_tx == 0) && (mstr_state_rx == 0) && (slv_state_tx == 0) && (slv_state_rx == 0);
         endproperty
 
+        property no_operation;
+            @(posedge clk) disable iff (rst)
+                (req == 0) |=> (mstr_state_tx == 0) && (mstr_state_rx == 0) && (slv_state_tx == 0) && (slv_state_rx == 0);
+        endproperty
+             
   
 
         // Assertion check on done_tx flag when mstr finish sending
@@ -371,9 +385,15 @@ module tb_top #(
         assert property (chk_sclk_rst)
             else $error("SCLK is toggle when reset");
 
-        // Assertion check on if 
+        // Assertion check on master and slave state is IDLE when rst is asserted 
         assert property (chk_mstr_slv_state_rst)
             else $error("Master and slave is not in IDLE state when reset");
+
+        // Assertion check on master and slave state is IDLE when req = 0 
+        assert property (no_operation)
+            else $error("Master and slave is not in IDLE state when req = 0");
+
+
 
 
 
