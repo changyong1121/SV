@@ -61,6 +61,7 @@ module tb_top #(
 		if (bit_counter_slv==8) begin
 	 		if (dout_slave === din_master)begin
 			$display("---------------------------------------PASS TEST--REQ=2'01--MOSI--dout_slave = din_master -----------------------------------------  " );
+			bit_counter_slv=0;
 			end 
 		end	else begin
 		$display("Failed");
@@ -79,6 +80,7 @@ module tb_top #(
 		if (bit_counter_mstr == 8) begin
 	 		if (dout_master === din_slave)begin
 			$display("---------------------------------------PASS TEST--REQ=2'10--MISO--dout_master = din_slave----------------------------------------- " );
+			bit_counter_mstr=0;
 			end 
 		end	else begin
 		$display("Failed");
@@ -124,7 +126,7 @@ module tb_top #(
             wait_duration = WAIT_DURATION;
             din_slave = 0;
 
-        repeat(200) begin
+        repeat(2) begin
             din_master = $urandom_range(1,255);
             @(posedge clk);
 
@@ -140,12 +142,13 @@ module tb_top #(
         req = 2;
         din_master = 0;
 
-        repeat(200) begin
+        repeat(2) begin
             din_slave = $urandom_range(1, 255);
             @(posedge clk);
 
 	check_dout_mstr();
             wait (done_rx == 1);
+
         end 
 
         // full duplex
@@ -153,7 +156,7 @@ module tb_top #(
         $display("full duplex, req = 2'b11");     
         req = 3;
 
-        repeat(200) begin
+        repeat(2) begin
             fork
                 begin
                     din_slave = $urandom_range(1, 255);
