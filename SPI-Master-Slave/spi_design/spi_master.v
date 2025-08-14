@@ -50,9 +50,6 @@ module spi_master
 		else if(state_tx == IDLE_TX && state_rx == IDLE_RX) begin // request can be changed only when both transmitter and receiver are in their IDLE states!
 			req_temp <= req;
 		end
-		else begin // in other states set req_temp to no operation
-			req_temp <= 2'b00;
-		end
 	end
 
 	// EDGE DETECTION FOR TRANSMITTER AND RECEIVER
@@ -110,6 +107,7 @@ module spi_master
 							state_tx <= WAIT_STATE_2;
 							din_temp <= {SPI_TRF_BIT{1'd0}};
 							mosi_temp <= 1'b0;
+                            req_temp <= 2'b00;
 							data_index_tx <= 4'd0;
 						end
 					end
@@ -161,6 +159,7 @@ module spi_master
 							done_temp_rx <= 1'b1;
 							data_index_rx <= 4'd0;
 							state_rx <= IDLE_RX;
+                            req_temp <= 2'b00;
 						end
 					end
 				end
@@ -175,7 +174,7 @@ module spi_master
 	assign done_rx = done_temp_rx;
 	assign mosi = mosi_temp;
 	assign dout = dout_temp;
-	assign sclk_en = ((state_tx == SEND_DATA) || (state_rx == GET_DATA))? 1'b1 : 1'b0; // only generate sclk when master is either sending data, receiving data or both
+    assign sclk_en = ((state_tx == SEND_DATA) || ((state_rx == GET_DATA) && (req_temp == 2'b10))|| ((state_tx == SEND_DATA) && (state_rx == GET_DATA)))? 1'b1 : 1'b0;
 	assign cs = ((state_tx != IDLE_TX) || (state_rx != IDLE_RX))? 1'b0 : 1'b1; // CS is low only when some request is being executed
 
 endmodule
