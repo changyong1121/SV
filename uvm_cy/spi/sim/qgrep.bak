@@ -1,0 +1,69 @@
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_drv.sv(26) @ 0: uvm_test_top.env.agt.drv [DRIVER] Asserting reset
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_drv.sv(31) @ 95000: uvm_test_top.env.agt.drv [DRIVER] Deasserting reset
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_drv.sv(59) @ 305000: uvm_test_top.env.agt.drv [DRIVER] Drive TX 1/3 tran to DUT: tx_data=0x7f (01111111)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_drv.sv(59) @ 1055000: uvm_test_top.env.agt.drv [DRIVER] Drive TX 2/3 tran to DUT: tx_data=0x1d (00011101)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_drv.sv(59) @ 1805000: uvm_test_top.env.agt.drv [DRIVER] Drive TX 3/3 tran to DUT: tx_data=0xa2 (10100010)
+[DRIVER]     5
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 395000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 7/7 tran mosi=0, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 475000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 6/7 tran mosi=1, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 555000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 5/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 635000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 4/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 715000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 3/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 795000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 2/7 tran mosi=1, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 875000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 1/7 tran mosi=1, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 955000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 0/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(78) @ 955000: uvm_test_top.env.agt.mon [MONITOR] Observe TX 1/3 tran 0x7f (01111111), RX tran 0xb9 (10111001)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1145000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 7/7 tran mosi=0, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1225000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 6/7 tran mosi=0, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1305000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 5/7 tran mosi=0, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1385000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 4/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1465000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 3/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1545000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 2/7 tran mosi=1, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1625000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 1/7 tran mosi=0, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1705000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 0/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(78) @ 1705000: uvm_test_top.env.agt.mon [MONITOR] Observe TX 2/3 tran 0x1d (00011101), RX tran 0xb9 (10111001)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1895000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 7/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 1975000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 6/7 tran mosi=0, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 2055000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 5/7 tran mosi=1, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 2135000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 4/7 tran mosi=0, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 2215000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 3/7 tran mosi=0, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 2295000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 2/7 tran mosi=0, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 2375000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 1/7 tran mosi=1, miso=0
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(72) @ 2455000: uvm_test_top.env.agt.mon [MONITOR] Observe MOSI/MISO 0/7 tran mosi=0, miso=1
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_mon.sv(78) @ 2455000: uvm_test_top.env.agt.mon [MONITOR] Observe TX 3/3 tran 0xa2 (10100010), RX tran 0xb9 (10111001)
+[MONITOR]    27
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(45) @ 0: uvm_test_top.env.scb [SCOREBOARD] Retrieved slave_reset_response value = 185 from spi_tb
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(47) @ 0: uvm_test_top.env.scb [SCOREBOARD] Retrieved SLAVE_RESET_RESPONSE value = b9 from spi_tb
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 395000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 7/7 tran mosi=0, miso=1, slave_rx_data=00000000
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 475000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 6/7 tran mosi=1, miso=0, slave_rx_data=00000001
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 555000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 5/7 tran mosi=1, miso=1, slave_rx_data=00000011
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 635000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 4/7 tran mosi=1, miso=1, slave_rx_data=00000111
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 715000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 3/7 tran mosi=1, miso=1, slave_rx_data=00001111
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 795000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 2/7 tran mosi=1, miso=0, slave_rx_data=00011111
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 875000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 1/7 tran mosi=1, miso=0, slave_rx_data=00111111
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 955000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 0/7 tran mosi=1, miso=1, slave_rx_data=01111111
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(87) @ 955000: uvm_test_top.env.scb [SCOREBOARD] Analyze DUT TX 1/3 tran 0x7f (01111111) DUT RX tran 0xb9 (10111001) SLV RX tran 0x7f (01111111)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1145000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 7/7 tran mosi=0, miso=1, slave_rx_data=11111110
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1225000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 6/7 tran mosi=0, miso=0, slave_rx_data=11111100
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1305000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 5/7 tran mosi=0, miso=1, slave_rx_data=11111000
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1385000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 4/7 tran mosi=1, miso=1, slave_rx_data=11110001
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1465000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 3/7 tran mosi=1, miso=1, slave_rx_data=11100011
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1545000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 2/7 tran mosi=1, miso=0, slave_rx_data=11000111
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1625000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 1/7 tran mosi=0, miso=0, slave_rx_data=10001110
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1705000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 0/7 tran mosi=1, miso=1, slave_rx_data=00011101
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(87) @ 1705000: uvm_test_top.env.scb [SCOREBOARD] Analyze DUT TX 2/3 tran 0x1d (00011101) DUT RX tran 0xb9 (10111001) SLV RX tran 0x1d (00011101)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1895000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 7/7 tran mosi=1, miso=1, slave_rx_data=00111011
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 1975000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 6/7 tran mosi=0, miso=0, slave_rx_data=01110110
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 2055000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 5/7 tran mosi=1, miso=1, slave_rx_data=11101101
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 2135000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 4/7 tran mosi=0, miso=1, slave_rx_data=11011010
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 2215000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 3/7 tran mosi=0, miso=1, slave_rx_data=10110100
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 2295000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 2/7 tran mosi=0, miso=0, slave_rx_data=01101000
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 2375000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 1/7 tran mosi=1, miso=0, slave_rx_data=11010001
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(82) @ 2455000: uvm_test_top.env.scb [SCOREBOARD] Analyze MOSI/MISO 0/7 tran mosi=0, miso=1, slave_rx_data=10100010
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(87) @ 2455000: uvm_test_top.env.scb [SCOREBOARD] Analyze DUT TX 3/3 tran 0xa2 (10100010) DUT RX tran 0xb9 (10111001) SLV RX tran 0xa2 (10100010)
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_scb.sv(151) @ 2555000: uvm_test_top.env.scb [SCOREBOARD] Test Completed: 3 Transactions, 0 Errors
+[SCOREBOARD]    30
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_cov.sv(41) @ 2555000: uvm_test_top.env.cov [COVERAGE] Coverage spi_cg      : 66.67%
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_cov.sv(42) @ 2555000: uvm_test_top.env.cov [COVERAGE] Coverage tx_data_cp  : 66.67%
+UVM_INFO /home/seanooi/TRAININGS/dv/uvm/temp/spi/design/spi_cov.sv(43) @ 2555000: uvm_test_top.env.cov [COVERAGE] Coverage rc_data_cp  : 66.67%
+[COVERAGE]     3
