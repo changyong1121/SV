@@ -17,18 +17,14 @@ module tb_top #(
 	logic [(SPI_TRF_BIT-1):0] dout_slave;
 	logic done_tx;
 	logic done_rx;
-    logic [7:0] expected_dout_slave;
-    logic [7:0] expected_dout_master;
+    logic [(SPI_TRF_BIT-1):0] expected_dout_slave;
+    logic [(SPI_TRF_BIT-1):0] expected_dout_master;
     logic [3:0] slv_bit_received_count;     
     logic [3:0] mstr_bit_received_count; 
 	logic sclk;
     logic sclk_posedge;
     logic sclk_negedge;
     logic cs;
-
-	int bit_counter_mstr;	
-	int bit_counter_slv;	    
-	int sclk_senddata;	
    
     spi_top dut (.*);
 
@@ -38,146 +34,181 @@ module tb_top #(
     logic slv_state_rx;
     logic req_enable;
 
+
     assign mstr_state_tx = dut.spi_master_inst.state_tx[1:0];
     assign mstr_state_rx = dut.spi_master_inst.state_rx;
     assign slv_state_tx = dut.spi_slave_inst.state_tx;
     assign slv_state_rx = dut.spi_slave_inst.state_rx;
-    assign sclk_senddata= dut.spi_master_inst.sclk;
+
     assign sclk = dut.sclk_generator_inst.sclk;
     assign sclk_posedge = dut.spi_master_inst.sclk_posedge;
     assign sclk_negedge = dut.spi_master_inst.sclk_negedge;
     assign cs = dut.spi_master_inst.cs;
     assign req_enable = (!mstr_state_tx && !mstr_state_rx); //&& !slv_state_tx && !slv_state_rx);
 
-	task check_dout_slv(); //req 01
-	bit_counter_slv=0;
-	while (bit_counter_slv < SPI_TRF_BIT) begin
-		@(posedge sclk_negedge);
-			bit_counter_slv = bit_counter_slv + 1;
-			$display("--->data_slv_received_counter =%0d ", bit_counter_slv);
-		end
-	@(posedge sclk_negedge);  //assume it is setup stage
-		if (bit_counter_slv==8) begin
-	 		if (dout_slave === din_master)begin
-			$display("---------------------------------------PASS TEST--REQ=2'01--MOSI--dout_slave = din_master -----------------------------------------  " );
-			end 
-		end	else begin
-		$display("Failed");
-		end
-	endtask
+    int bit_counter_slv = 0;  // Define in a higher scope
+    int bit_counter_mstr = 0;
+    int pass_count_slv = 0;
+    int fail_count_slv = 0;
+    int pass_count_mstr = 0;
+    int fail_count_mstr = 0;
+
+    task check_dout_slv();
+        @(posedge sclk_negedge);  // Wait for SCLK negedge (flag or direct signal)
+        @(posedge clk);           // One cycle later
+        #5;
+        $display("[check_dout_slv] Time=%0t | Bit %0d | dout_slave = 0x%0b | din_master = 0x%0b", 
+             $time, bit_counter_slv, dout_slave, din_master);
+
+        bit_counter_slv++;
+
+        if (bit_counter_slv == SPI_TRF_BIT) begin
+            if (dout_slave === din_master) begin
+                $display("✅ [PASS] Time=%0t | dout_slave (0x%0b)MATCHES din_master (0x%0b)", $time, dout_slave, din_master);
+            pass_count_slv++;
+            end else begin
+                $display("❌ [FAIL] Time=%0t | dout_slave = 0x%0b, din_master = 0x%0b", $time, dout_slave, din_master);
+            fail_count_slv++;
+            end
+            bit_counter_slv = 0; // Reset counter for next transaction
+        end
+    endtask
+
+    task check_dout_mstr();
+        @(posedge sclk_negedge);  // Wait for SCLK negedge (flag or direct signal)
+        @(posedge clk);           // One cycle later
+        #5;
+        $display("[check_dout_mstr] Time=%0t | Bit %0d | dout_mstr = 0x%0b | din_slave = 0x%0b", 
+             $time, bit_counter_mstr, dout_master, din_slave);
+
+        bit_counter_mstr++;
+
+        if (bit_counter_mstr == SPI_TRF_BIT) begin
+            if (dout_slave === din_master) begin
+                $display("✅ [PASS] Time=%0t | dout_master (0x%0b) MATCHES din_slave (0x%0b)", $time, dout_master, din_slave);
+            pass_count_mstr++;
+            end else begin
+                $display("❌ [FAIL] Time=%0t | dout_master = 0x%0b, din_slave = 0x%0b", $time, dout_master, din_slave);
+            fail_count_mstr++;
+            end
+            bit_counter_mstr = 0; // Reset counter for next transaction
+        end
+    endtask
+
+    task mstr_send_only();
+        req = 1;
+        din_slave = 0;
+        wait_duration = $urandom_range(10,50);        
+        din_master = $urandom_range(1,255);
+        @(posedge clk);
+  	    repeat (SPI_TRF_BIT) begin
+	        check_dout_slv();
+        end
+    endtask
+
+    task slv_send_only();
+        req = 2;
+        din_master = 0;
+        wait_duration = $urandom_range(10,50);
+        din_slave = $urandom_range(1, 255);
+        @(posedge clk);
+        repeat (SPI_TRF_BIT) begin
+	        check_dout_mstr();
+        end
+    endtask
+
+    task both_mstr_slv_send();
+        req = 3;
+        wait_duration = $urandom_range(10,50);
+        fork
+            begin
+                din_master = $urandom_range(1,255);
+                @(posedge clk);
+  	            repeat (SPI_TRF_BIT) begin
+	                check_dout_slv();
+                end
+                wait (done_rx == 1);	
+            end
+
+            begin
+		        din_slave = $urandom_range(1, 255);
+                @(posedge clk);
+                repeat (SPI_TRF_BIT) begin
+	                check_dout_mstr();
+                end
+		        wait (done_tx == 1);	                     
+            end
+        join
+
+        @(posedge clk);
+    endtask
+
+    task reset_sequence();
+        rst = 1;
+        #300;
+        rst = 0;
+    endtask
 
 
-	task check_dout_mstr(); //req 10
-	bit_counter_mstr=0;
-	while (bit_counter_mstr < SPI_TRF_BIT) begin
-		@(posedge sclk_negedge);
-			bit_counter_mstr = bit_counter_mstr + 1;
-			$display("--->data_mstr_received_counter =%0d ", bit_counter_mstr);
-		end
-	@(posedge sclk_negedge);  //assume it is setup stage
-		if (bit_counter_mstr == 8) begin
-	 		if (dout_master === din_slave)begin
-			$display("---------------------------------------PASS TEST--REQ=2'10--MISO--dout_master = din_slave----------------------------------------- " );
-			end 
-		end	else begin
-		$display("Failed");
-		end
-	endtask
 
+    covergroup cg @(posedge clk);
+	    coverpoint rst;
+	    coverpoint req;
+	    coverpoint din_master;
+	    coverpoint din_slave;
+	    coverpoint dout_master;
+	    coverpoint dout_slave;
+    endgroup
 
-   covergroup cg @(posedge clk);
-	coverpoint rst;
-	coverpoint req;
-	coverpoint din_master;
-	coverpoint din_slave;
-	coverpoint dout_master;
-	coverpoint dout_slave;
-   endgroup
 	cg cg_inst;
     // Clock generation
     initial clk = 0;
     always #5 clk = ~clk;
 
   
-    //Reset
     initial begin
         $display("Test start.");     
-        $monitor("Time=%0t | rst=%0b | req=%0b |  din_master=%0b   |   dout_slave=%0b |  din_slave=%0b | dout_master=%0b  "  
-		 ,$time,     rst,      req,       din_master,          dout_slave ,      din_slave ,     dout_master );
-        cg_inst = new(); 
-        rst = 1;
-        #15;
-        rst = 0;
-        $display("no operation, req = 2'b00");     
-       
-         
+        cg_inst = new();             
         din_master = 0;
         din_slave = 0;
 	    req = 0;
 
+        // Reset sequence
+        reset_sequence();
         #10;
 
+        // master send slave received
         wait (req_enable);
         $display("master send slave received, req = 2'b01");     
-        req = 1;
-        din_slave = 0;
-
         repeat(20) begin
-            din_master = $urandom_range(1,255);
-            wait_duration = $urandom_range(10,50);
-            @(posedge clk);
-	        check_dout_slv();
+            mstr_send_only();
 		    wait (done_tx == 1);	
-  	end 
-     
+        end
 
-        //slave send, master received (miso)
+        // slave send, master received 
         wait (req_enable);
         $display("slave send master received, req = 2'b10");     
-        req = 2;
-        din_master = 0;
-
         repeat(20) begin
-            din_slave = $urandom_range(1, 255);
-            wait_duration = $urandom_range(10,50);
-            @(posedge clk);
-
-	check_dout_mstr();
+            slv_send_only();
             wait (done_rx == 1);
-        end 
+        end
 
         // full duplex
         wait  (req_enable);
-        $display("full duplex, req = 2'b11");     
-        req = 3;
-
-        repeat(200) begin
-            wait_duration = $urandom_range(10,50);
-            fork
-                begin
-                    din_slave = $urandom_range(1, 255);
-                    wait (done_rx == 1);
-                    check_dout_mstr();
-
-                end
-                
-                begin
-                    din_master = $urandom_range(1, 255);
-                    wait (done_tx == 1); 
-                    check_dout_slv();                   
-                end
-            join
-
-            @(posedge clk);
-        end 
-    
+        $display("full duplex, req = 2'b11");   
+        repeat (200) begin
+            both_mstr_slv_send();
+        end  
+       
+ 
+        // no operation
         wait  (req_enable);
         $display("No operation, req = 2'b00");     
         req = 0;
         repeat (1) begin
             wait_duration = $urandom_range(10,50);
-            din_master = $urandom_range(1, 255);
-            din_slave = $urandom_range(1, 255);
+            din_master = $urandom_range(1,255);
+            din_slave = $urandom_range(1,255);
             repeat (200) @(posedge clk);
         end
 
@@ -185,58 +216,49 @@ module tb_top #(
         wait  (req_enable);
         $display("master send slave received, req = 2'b01"); 
         repeat(1) begin
-            req = 1;
-            wait_duration = $urandom_range(10,50);
-            din_master =  $urandom_range(1, 255); 
-            wait ((mstr_state_tx == 2) && (slv_bit_received_count == 5)); //At mstr send state assert rst
-            rst = 1;
-            #300;
-            rst = 0;
+            mstr_send_only();
+            wait ((mstr_state_tx == 2) && (slv_bit_received_count == 5)); //At mstr send state assert rst   
+            #20;
+            reset_sequence();
         end
+
         /////////////////////
         wait  (req_enable);
         repeat (1) begin
-            req = 1;
-            wait_duration = $urandom_range(10,50);
-            din_master = $urandom_range(1, 255); 
+            mstr_send_only(); 
             wait (mstr_state_tx == 3); // At mstr wait state assert rst
             #20;
-            rst = 1;
-            #300;
-            rst = 0;
+            reset_sequence();
         end
         
         ////////////////////
          
         wait  (req_enable);
         repeat (1) begin
-            req = 1;
-            wait_duration = $urandom_range(10,50);
-            din_master = $urandom_range(1, 255); 
+            mstr_send_only(); 
             wait (mstr_state_tx == 1); // At mstr wait state assert rst
             #20;
-            rst = 1;
-            #300;
-            rst = 0;
+            reset_sequence();
         end
 
         // slave send, rst asserted
         wait (req_enable);
         repeat (1) begin
-            $display("slave send master received, req = 2'b10");     
-            req = 2;
-            wait_duration = $urandom_range(10,50);
-            din_master = 200;
+            $display("slave send master received, req = 2'b10"); 
+            slv_send_only();    
             wait (slv_state_tx && (mstr_bit_received_count == 4));
-            rst = 1;
-            #300;
-            rst = 0;
+            #20
+            reset_sequence();
         end
 
         #20;
         $display("Test complete.");
-	$display ("Cumulative Coverage = %0.2f %%", cg_inst.get_coverage());
-        $finish;
+        $display("\n================== TEST SUMMARY ==================");
+        $display("Master send, Slave received : Passed = %0d | Failed = %0d", pass_count_slv, fail_count_slv);
+        $display("Slave send, Master received : Passed = %0d | Failed = %0d", pass_count_mstr, fail_count_mstr);
+        $display ("Cumulative Coverage = %0.2f %%", cg_inst.get_coverage());
+        $display("==================================================");  
+	    $finish;
     end
 
     initial begin
@@ -277,7 +299,7 @@ module tb_top #(
         end
     end
 
-    logic [4:0] wait_done_tx_counter;
+    logic [7:0] wait_done_tx_counter;
     logic wait_done_tx_flag;
     logic wait_done_rx_flag;
 
@@ -323,7 +345,7 @@ module tb_top #(
        
     genvar i;
     generate
-    for (i = 0; i < 8; i++) begin : gen_chk_dout_slave
+    for (i = 0; i < SPI_TRF_BIT; i++) begin : gen_chk_dout_slave
         property chk_dout_slave; //master in
             @(negedge sclk) disable iff ((!(req == 1 || req == 3)) || rst)
                 (mstr_state_tx == 2) |-> (dout_slave[i] == expected_dout_slave[i]);
@@ -381,9 +403,9 @@ module tb_top #(
         assert property (chk_mstr_rx_done)
             else $error("Done_rx flag is not asserted after master finish receiving");
 
-        // Assertion check on sclk is deasserted when rst is asserted
+        // Assertion check on sclk is low when rst is asserted
         assert property (chk_sclk_rst)
-            else $error("SCLK is toggle when reset");
+            else $error("SCLK is high when reset");
 
         // Assertion check on master and slave state is IDLE when rst is asserted 
         assert property (chk_mstr_slv_state_rst)
