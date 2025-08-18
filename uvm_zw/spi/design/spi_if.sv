@@ -25,4 +25,3 @@ interface spi_if;
     endclocking
 
 endinterface
-
