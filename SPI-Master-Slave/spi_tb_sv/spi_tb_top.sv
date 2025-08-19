@@ -175,10 +175,17 @@ module tb_top #(
     covergroup cg @(posedge clk);
 	    coverpoint rst;
 	    coverpoint req;
-	    coverpoint din_master;
-	    coverpoint din_slave;
+	    coverpoint din_master {
+		bins low_range = {[0:127]}; 
+		bins high_range = {[128:255]};}
+	    coverpoint din_slave{
+		bins low_range = {[0:127]}; 
+		bins high_range = {[128:255]};}
 	    coverpoint dout_master;
 	    coverpoint dout_slave;
+	cross req, din_master;
+	cross req, din_slave;
+
     endgroup
 
 	cg cg_inst;
@@ -201,7 +208,7 @@ module tb_top #(
         // master send slave received
         wait (req_enable);
         $display("master send slave received, req = 2'b01");     
-        repeat(20) begin
+        repeat(2000) begin
             mstr_send_only();
 		    wait (done_tx == 1);	
         end
@@ -209,7 +216,7 @@ module tb_top #(
         // slave send, master received 
         wait (req_enable);
         $display("slave send master received, req = 2'b10");     
-        repeat(20) begin
+        repeat(2000) begin
             slv_send_only();
             wait (done_rx == 1);
         end
@@ -217,7 +224,7 @@ module tb_top #(
         // full duplex
         wait  (req_enable);
         $display("full duplex, req = 2'b11");   
-        repeat (200) begin
+        repeat (1000) begin
             both_mstr_slv_send();
         end  
        

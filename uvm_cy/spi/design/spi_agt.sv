@@ -5,7 +5,7 @@ class spi_agt extends uvm_agent;
 	
 	spi_drv drv;
 	spi_mon mon;
-	spi_sqr spr;
+	spi_sqr sqr;
 	
 	function new(string name, uvm_component parent);
     		super.new(name, parent);

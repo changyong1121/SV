@@ -8,7 +8,7 @@ module spi_tb;
   initial $display(">>>>>>>> SIM TIME START: %0t", $time);
   final   $display(">>>>>>>> SIM TIME END  : %0t", $time);
 
-  spi_master_controller_if spi_if();
+   spi_master_controller_if spi_if();
 
   spi #(.CLK_DIV(4)) dut(
             .clk    (spi_if.clk_tb    ),      // System clock
@@ -26,13 +26,14 @@ module spi_tb;
 	);
 
 initial begin
-	spi_if.clk = 0;
-	forever #5 spi_if.clk = ~spi_if.clk;
+	spi_if.clk_tb = 0;
+	forever #5 spi_if.clk_tb = ~spi_if.clk_tb;
 	
 end	
 
 initial begin
-//	uvm_config_db#(int)::set(null, "*", "slave_reset_response", slave_reset_response);	
+//	uvm_config_db#(virtual spi_master_controller_if )::set(null, "uvm_test_top.env.aft.drv", "vif", spi_vif);	//uvm_config_db#(virtual spi_master_controller_if )::set(null, "uvm_test_top.env.aft.drv", "vif", spi_vif)
+	uvm_config_db#(virtual spi_master_controller_if )::set(null, "*", "vif", spi_if);
  	run_test("spi_test");
 
 end
@@ -57,14 +58,14 @@ end
     logic [7:0] slave_tx_data;
     logic [3:0] idle_counter;
     
-    always @(posedge spi_if.sclk or negedge spi_if.rst_n or posedge spi_if.cs_n) begin
-        if (!spi_if.rst_n) begin
+    always @(posedge spi_if.sclk_tb or negedge spi_if.rst_n_tb or posedge spi_if.cs_n_tb) begin
+        if (!spi_if.rst_n_tb) begin
             slave_rx_data <= 8'h00;
-            spi_if.miso <= 1'b0;
+            spi_if.miso_tb <= 1'b0;
             slave_tx_data <= SLAVE_RESET_RESPONSE;
         end
-	else if (spi_if.cs_n) begin
-            spi_if.miso <= 1'b0;
+	else if (spi_if.cs_n_tb) begin
+            spi_if.miso_tb <= 1'b0;
             slave_tx_data <= SLAVE_RESET_RESPONSE;
 
 	    `uvm_info("SLV-RLD", $sformatf("RX_REG=0x%2h \(%8b\), TX_REG=0x%2h \(%8b\)",
@@ -72,10 +73,10 @@ end
         end
 	else begin
                 // Shift in MOSI on rising edge
-                slave_rx_data <= {slave_rx_data[6:0], spi_if.mosi};
+                slave_rx_data <= {slave_rx_data[6:0], spi_if.mosi_tb};
 
                 // Update MISO immediately for next bit
-                spi_if.miso <= slave_tx_data[7];
+                spi_if.miso_tb <= slave_tx_data[7];
                 slave_tx_data <= {slave_tx_data[6:0], 1'b0};
 
 		`uvm_info("SLV", $sformatf("RX_REG=0x%2h \(%8b\), TX_REG=0x%2h \(%8b\)",
@@ -83,12 +84,12 @@ end
         end
     end
 
-    always @(posedge spi_if.clk or negedge spi_if.rst_n) begin
-        if (!spi_if.rst_n) begin
+    always @(posedge spi_if.clk_tb or negedge spi_if.rst_n_tb) begin
+        if (!spi_if.rst_n_tb) begin
             idle_counter <= 5'd0;
             slave_tx_data <= SLAVE_RESET_RESPONSE;
         end
-        else if (spi_if.cs_n) begin  // SPI idle (cs_n=1)
+        else if (spi_if.cs_n_tb) begin  // SPI idle (cs_n=1)
             if (idle_counter < 5'd7) begin
                 slave_tx_data <= 8'h00;  // Drive 0 for 8 cycles
                 idle_counter <= idle_counter + 1;

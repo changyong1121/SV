@@ -6,18 +6,19 @@ class spi_scb extends uvm_scoreboard;
 	
 	//implement port to receive transactions
 	uvm_analysis_imp #(spi_tran, spi_scb) scb_imp;
-
+	
+	int tran_index;
 
 	function new (string name, uvm_component parent);
 		super.new (name , parent);
 		scb_imp = new("scb_imp", this);		
 	endfunction
-
+		
 	//Perform actual vs expected comparison
 	function void write(spi_tran tr_dut);
 		`uvm_info("SCOREBOARD", $sformatf("Checking: start=%0b, tx_data=0x%0h, rx_data=0x%0h, done=%0b",
     							tr_dut.start, tr_dut.tx_data, tr_dut.rx_data, tr_dut.done), UVM_MEDIUM)
-
+		tran_index=0;
 	//spi_tran done is done
 	if (tr_dut.done)begin
 		if (tr_dut.rx_data !== tr_dut.tx_data) begin 

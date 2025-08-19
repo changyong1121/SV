@@ -2,7 +2,7 @@ class spi_mon extends uvm_monitor;
 	`uvm_component_utils (spi_mon)
 
 
-	virtual spi_master_controller_if.mon_mp vif; 
+	virtual spi_master_controller_if vif; 
 	uvm_analysis_port #(spi_tran) mon_ap;
 
 	function new(string name, uvm_component parent);
@@ -12,16 +12,22 @@ class spi_mon extends uvm_monitor;
 	
 	function void build_phase(uvm_phase phase);
 	   super.build_phase(phase);
-	   if(!uvm_config_db#(virtual spi_master_controller_if.mon_mp)::get(this,"","vif",vif))begin
+	   if(!uvm_config_db#(virtual spi_master_controller_if)::get(this,"","vif",vif))begin
 		`uvm_error("Monitor","Virtual interface (mon_mp) not found in config db")
 		end
 	endfunction
 
+	int max_count ;
+	int count;
+
+
 	task run_phase(uvm_phase phase);
 		spi_tran tr_dut;
 		@(posedge vif.clk_tb);
+		 max_count = 10;
+		 count = 0;
 		
-		forever begin
+		while (count<max_count) begin		
 			@(posedge vif.clk_tb);
 
 			tr_dut = spi_tran::type_id::create("tr_dut");
@@ -37,11 +43,13 @@ class spi_mon extends uvm_monitor;
 			tr_dut.miso = vif.miso_tb;
 			tr_dut.cs_n = vif.cs_n_tb;
 
-	   `uvm_info("MONITOR", $sformat("Observe: Start_tb= %b , ",
+	   `uvm_info("MONITOR", $sformatf("Observe: Start_tb= %b , ",
 						   tr_dut.start), UVM_MEDIUM)
 
 
 	 mon_ap.write(tr_dut);
+		count++;
          end
+	`uvm_info("MONITOR", $sformatf("Monitor finished after %0d captures", count), UVM_LOW)
 	endtask
 endclass

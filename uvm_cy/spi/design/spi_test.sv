@@ -28,6 +28,7 @@ class spi_test extends uvm_test;
   phase.raise_objection(this);
       seq.start(env.agt.sqr);
     wait(env.scb.tran_index - 1 == seq.seq_count);
+//	#10000;
     phase.drop_objection(this);
   endtask
 endclass
