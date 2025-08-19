@@ -143,6 +143,27 @@ module tb_top #(
         @(posedge clk);
     endtask
 
+    task randomize_test();
+        req = $urandom_range(0,3);
+        if (req == 0) begin
+            wait_duration = $urandom_range(10,50);
+            din_master = $urandom_range(1,255);
+            din_slave = $urandom_range(1,255);
+        end else
+        if (req == 1) begin
+            mstr_send_only();
+            wait (done_tx == 1);
+        end else 
+        if (req == 2) begin
+            slv_send_only();
+            wait(done_rx == 1);
+        end else
+        if (req == 3) begin
+            both_mstr_slv_send();
+        end
+    endtask
+
+       
     task reset_sequence();
         rst = 1;
         #300;
@@ -251,6 +272,12 @@ module tb_top #(
             reset_sequence();
         end
 
+        wait (req_enable);
+        repeat (10) begin
+            $display("randomize input test");
+            randomize_test();
+        end
+        
         #20;
         $display("Test complete.");
         $display("\n================== TEST SUMMARY ==================");
