@@ -53,7 +53,7 @@ module tb_top #(
     int pass_count_mstr = 0;
     int fail_count_mstr = 0;
 
-    task check_dout_slv();
+     task check_dout_slv();
         @(posedge sclk_negedge);  // Wait for SCLK negedge (flag or direct signal)
         @(posedge clk);           // One cycle later
         #5;
@@ -275,12 +275,12 @@ module tb_top #(
             mstr_bit_received_count  <= 0;
             slv_bit_received_count  <= 0;
         end else begin
-            if ((mstr_state_tx == 2) && (req == 1 | req == 3) && sclk_negedge && slv_bit_received_count < 8) begin
+            if ((req == 1 | req == 3) && sclk_negedge && slv_bit_received_count < 8) begin
                 expected_dout_slave <= (expected_dout_slave << 1) | din_master[7 - slv_bit_received_count];
                 slv_bit_received_count  <= slv_bit_received_count + 1; 
             end 
 
-            if ((slv_state_tx == 1) && (req == 2 | req == 3) && sclk_negedge && mstr_bit_received_count < 8) begin
+            if ((req == 2 | req == 3) && sclk_negedge && mstr_bit_received_count < 8) begin
                 expected_dout_master <= (expected_dout_master << 1) | din_slave[7 - mstr_bit_received_count];
                 mstr_bit_received_count  <= mstr_bit_received_count + 1;      
             end
@@ -308,7 +308,7 @@ module tb_top #(
     always_ff @(posedge clk) begin
         if (rst) begin
             wait_done_tx_counter <= 0;
-        end else if (sclk_posedge && (mstr_state_tx == 2) && slv_bit_received_count == SPI_TRF_BIT) begin
+        end else if (sclk_posedge && slv_bit_received_count == SPI_TRF_BIT) begin
             if (din_master == dout_slave) begin
                 wait_done_tx_flag <= 1;
             end
@@ -324,15 +324,7 @@ module tb_top #(
         end
      end
          
-    logic rx_clk;
-    //assign rx_clk = (sclk | sclk_negedge) ; 
-    
-    always_ff @(posedge clk) begin
-        if (sclk | sclk_negedge) 
-            rx_clk <= 1;
-        else
-            rx_clk <= 0;
-    end
+
 
     always_comb begin
         if ((dout_master == din_slave) && (mstr_bit_received_count == SPI_TRF_BIT)) begin
@@ -348,12 +340,12 @@ module tb_top #(
     for (i = 0; i < SPI_TRF_BIT; i++) begin : gen_chk_dout_slave
         property chk_dout_slave; //master in
             @(negedge sclk) disable iff ((!(req == 1 || req == 3)) || rst)
-                (mstr_state_tx == 2) |-> (dout_slave[i] == expected_dout_slave[i]);
+                dout_slave[i] |-> expected_dout_slave[i];
         endproperty
  
         property chk_dout_mstr; //slave in
             @(negedge sclk) disable iff ((!(req == 2 || req ==3)) || rst)
-                (slv_state_tx == 1) |-> (dout_master[i] == expected_dout_master[i]);
+                dout_master[i] |-> expected_dout_master[i];
         endproperty
 
         //assertion check on when slave send, master received
@@ -374,8 +366,8 @@ module tb_top #(
         endproperty
       
         property chk_mstr_rx_done;
-            @(negedge rx_clk) disable iff (!(req == 2 || req == 3) || rst)
-                $rose(wait_done_rx_flag) |=> $rose(done_rx);              
+            @(posedge clk) disable iff (!(req == 2 || req == 3) || rst)
+                sclk_negedge && wait_done_rx_flag |=> $rose(done_rx);              
         endproperty
 
         property chk_sclk_rst;
@@ -394,7 +386,6 @@ module tb_top #(
         endproperty
              
   
-
         // Assertion check on done_tx flag when mstr finish sending
         assert property (chk_mstr_tx_done)
             else $error("Done_tx flag is not asserted after master finish transaction");
@@ -414,10 +405,6 @@ module tb_top #(
         // Assertion check on master and slave state is IDLE when req = 0 
         assert property (no_operation)
             else $error("Master and slave is not in IDLE state when req = 0");
-
-
-
-
 
 endmodule
 
