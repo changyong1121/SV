@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1755499703.634738046, "rt":15.89, "ut":16.00, "st":0.58}}
+{"vcselab":{"timestamp_begin":1755499719.596774414, "rt":0.23, "ut":0.16, "st":0.06}}
+{"link":{"timestamp_begin":1755499719.883560460, "rt":0.88, "ut":0.62, "st":0.28}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1755499702.908494229}
+{"VCS_COMP_START_TIME": 1755499702.908494229}
+{"VCS_COMP_END_TIME": 1755499720.900631727}
+{"VCS_USER_OPTIONS": "-sverilog -full64 -l spi_comp.log -sverilog +v2k +vcs+lic+wait +vcs+flush+all -debug_access+all -kdb -debug_report -top spi_tb -o spi_simv -ntb_opts uvm-ieee-2020-2.0 +define+UVM_OBJECT_MUST_HAVE_CONSTRUCTOR -file /home/user08/training/ww04/SV/uvm_zw/spi/design/spi.f -timescale=1ns/1ps -cm line+tgl+cond+fsm+branch+assert -assert enable_diag"}
+{"vcs1": {"peak_mem": 553724}}
+{"vcselab": {"peak_mem": 178908}}

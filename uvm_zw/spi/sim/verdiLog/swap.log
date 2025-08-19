@@ -1,0 +1,138 @@
+version: (200506)
+
+available memory: 64M bytes
+used memory: 311296 bytes [need 304K bytes if disable swap]
+
+used block: 10 [memory(10) file(0)]
+                 [ 8K(6) 64K(4) { total 304K bytes } ]
+overhead: (9514) bytes for (10) blocks [Average: (951) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 4(times) 34K(bytes) [7K bytes compressed data from file]
+access => 311636(times) 2448M(bytes)
+          [hit ratio: 99.9987%]
+
+time: write(0) read(0)  unit: second
+
+swap file directory: (/home/user08/training/ww04/SV/uvm_zw/spi/sim/verdiLog)
+used swap file number: (6)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (7)
+closeHead: (1)
+closeTail: (6)
+openCnt: (1)
+fid(6): fd(0) fileName(NULL)
+	mode(rb)	hot(5) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(rb)	hot(4) cool(6) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(rb)	hot(3) cool(5) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(rb)	hot(1) cool(4) pos(0)
+fid(2): fd(23) fileName(/home/user08/training/ww04/SV/uvm_zw/spi/sim/verdiLog/_swap_0001#657777601#124734)
+	size(0) lastModTime(0) curModTime(1755500973)
+	mode(w+b)	hot(4) cool(1) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(rb)	hot(2) cool(3) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Mon Aug 18 15:15:17 2025
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 557056 bytes [need 304K bytes if disable swap]
+
+used block: 19 [memory(19) file(0)]
+                 [ 8K(12) 64K(7) { total 544K bytes } ]
+overhead: (9514) bytes for (19) blocks [Average: (500) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 7(times) 65K(bytes) [14K bytes compressed data from file]
+access => 505376(times) 3973M(bytes)
+          [hit ratio: 99.9986%]
+
+time: write(0) read(0)  unit: second
+
+swap file directory: (/home/user08/training/ww04/SV/uvm_zw/spi/sim/verdiLog)
+used swap file number: (10)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (12)
+closeHead: (7)
+closeTail: (10)
+openCnt: (1)
+fid(11): fd(0) fileName(NULL)
+	mode(rb)	hot(10) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(rb)	hot(9) cool(11) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(rb)	hot(7) cool(10) pos(0)
+fid(8): fd(38) fileName(/home/user08/training/ww04/SV/uvm_zw/spi/sim/verdiLog/_swap_0001#657777601#124734)
+	size(0) lastModTime(0) curModTime(1755501317)
+	mode(w+b)	hot(9) cool(7) pos(0)
+fid(7): fd(0) fileName(NULL)
+	mode(rb)	hot(8) cool(9) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(2): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Mon Aug 18 15:20:30 2025
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 630784 bytes [need 304K bytes if disable swap]
+
+used block: 21 [memory(21) file(0)]
+                 [ 8K(13) 64K(8) { total 616K bytes } ]
+overhead: (9514) bytes for (21) blocks [Average: (453) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 8(times) 66K(bytes) [15K bytes compressed data from file]
+access => 524769(times) 4126M(bytes)
+          [hit ratio: 99.9985%]
+
+time: write(0) read(0)  unit: second
+
+swap file directory: (/home/user08/training/ww04/SV/uvm_zw/spi/sim/verdiLog)
+used swap file number: (12)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (14)
+closeHead: (12)
+closeTail: (13)
+openCnt: (1)
+fid(13): fd(37) fileName(/home/user08/training/ww04/SV/uvm_zw/spi/sim/verdiLog/_swap_0001#657777601#124734)
+	size(0) lastModTime(0) curModTime(1755501630)
+	mode(w+b)	hot(0) cool(12) pos(0)
+fid(12): fd(0) fileName(NULL)
+	mode(rb)	hot(13) cool(0) pos(0)
+fid(11): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(NULL)	hot(

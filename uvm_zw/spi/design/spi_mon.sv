@@ -28,20 +28,22 @@ class spi_mon extends uvm_monitor;
 
         forever begin
             @(posedge vif.sclk);
-            wait (vif.mon_cb.done == 1);
+            //wait (vif.mon_cb.done == 1);
             tr_dut = spi_tran::type_id::create("tr_dut");
             tr_dut.tx_data = vif.mon_cb.tx_data;
             tr_dut.start = vif.mon_cb.start;
-            tr_dut.rx_data = vif.mon_cb.rx_data;
             tr_dut.busy = vif.mon_cb.busy;
+
+            //@(negedge vif.sclk);
+            tr_dut.rx_data = vif.mon_cb.rx_data;
             tr_dut.done = vif.mon_cb.done;
             tr_dut.tran_count = this.tran_count;
             tr_dut.tran_index = this.tran_index;
             tr_dut.tran_type = this.tran_type;
 
-            `uvm_info("MONITOR", $sformatf("Observe %0d/%0d %s tran from DUT: tx_data=0x%h, rx_data=0x%h, start=%b, busy=%b, done=%b",
-                                     tran_index, tran_count, tran_type, tr_dut.tx_data, tr_dut.rx_data, tr_dut.start, tr_dut.busy, tr_dut.done),
-				     UVM_MEDIUM)
+           // `uvm_info("MONITOR", $sformatf("Observe %0d/%0d %s tran from DUT: tx_data=0x%h, rx_data=0x%h, start=%b, busy=%b, done=%b",
+             //                        tran_index, tran_count, tran_type, tr_dut.tx_data, tr_dut.rx_data, tr_dut.start, tr_dut.busy, tr_dut.done),
+			//	     UVM_MEDIUM)
 
             tran_index++;
             mon_ap.write(tr_dut);

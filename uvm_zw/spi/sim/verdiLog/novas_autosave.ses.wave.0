@@ -1,0 +1,74 @@
+Magic 271485
+Revision Verdi_W-2024.09-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 417 176 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/user08/training/ww04/SV/uvm_zw/spi/sim/spi_sim.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+windowTimeUnit 1ps
+
+; waveform viewport range
+zoom 358637.832728 1075913.498185 1p
+cursor 235000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 0
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/user08/training/ww04/SV/uvm_zw/spi/sim/spi_sim.fsdb"
+addSignal -h 15 -UNSIGNED -BIN /spi_tb/spi_if/tx_data[7:0]
+addSignal -h 15 /spi_tb/dut/sclk
+addSignal -h 15 -holdScope busy
+addSignal -h 15 -holdScope done
+addSignal -h 15 /spi_tb/spi_if/start
+addSignal -h 15 /spi_tb/spi_slv_if/clk
+addSignal -h 15 /spi_tb/spi_if/clk
+addSignal -h 15 -holdScope rst_n
+addSignal -h 15 -UNSIGNED -HEX -holdScope rx_data[7:0]
+addSignal -h 15 -UNSIGNED -BIN /spi_tb/spi_slv_if/slave_rx_data[7:0]
+addSignal -h 15 /spi_tb/spi_if/busy
+addSignal -h 15 -holdScope done
+addSignal -h 15 -holdScope sclk
+addSignal -h 15 -holdScope mosi
+addSignal -h 15 -holdScope miso
+addSignal -h 15 /spi_tb/spi_slv_if/mosi
+addSignal -h 15 -holdScope miso
+addGroup "G2"
+addGroup "G3"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

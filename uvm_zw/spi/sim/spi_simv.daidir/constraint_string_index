@@ -1,0 +1,5 @@
+0 17 this.rand_reg_val 2
+0 5 alloc 5
+0 2 tr 1
+0 7 param_t 4
+0 3 seq 3

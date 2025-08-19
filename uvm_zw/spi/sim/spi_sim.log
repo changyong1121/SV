@@ -1,0 +1,334 @@
+Command: /home/user08/training/ww04/SV/uvm_zw/spi/sim/./spi_simv -l spi_sim.log +UVM_NO_RELNOTES -cm line+tgl+cond+fsm+branch+assert -assert summary
+Chronologic VCS simulator copyright 1991-2024
+Contains Synopsys proprietary information.
+Compiler version W-2024.09-SP2_Full64; Runtime version W-2024.09-SP2_Full64;  Aug 18 15:30 2025
+>>>>>>>> SIM TIME START: 0
+UVM_INFO @ 0: reporter [RNTST] Running test spi_test...
+*Verdi* Loading libsscore_vcs202409.so
+FSDB Dumper for VCS, Release Verdi_W-2024.09-SP2, Linux x86_64/64bit, 03/03/2025
+(C) 1996 - 2025 by Synopsys, Inc.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file 'spi_sim.fsdb'
+*Verdi* : Begin traversing the SVA assertions under scope (spi_tb), layer (0).
+*Verdi* : End of traversing the SVA assertions.
+*Verdi* : Begin traversing the scope (spi_tb), layer (0).
+*Verdi* : End of traversing.
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_test.sv(26) @ 0: uvm_test_top [TEST] Starting sequences with config:
+                                Normal: count=10, delay=0-0
+                                
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(22) @ 0: uvm_test_top.env.agt.sqr@@seq [spi_seq] Normal Master Sequence
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 105000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 105000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 105000: reporter [SLV] RX_REG=0x00 (00000000), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 185000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(61) @ 185000: uvm_test_top.env.scb [SB] PASS: Expected = 0x1, Got = 0x1
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 185000: reporter [SLV] RX_REG=0x01 (00000001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 265000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 265000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 265000: reporter [SLV] RX_REG=0x03 (00000011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 345000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 345000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 345000: reporter [SLV] RX_REG=0x07 (00000111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 425000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 425000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 425000: reporter [SLV] RX_REG=0x0f (00001111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 505000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 505000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 505000: reporter [SLV] RX_REG=0x1f (00011111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 585000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 585000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x111110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 585000: reporter [SLV] RX_REG=0x3e (00111110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 665000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 665000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1111100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 665000: reporter [SLV] RX_REG=0x7c (01111100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 705000: reporter [SLV-RLD] RX_REG=0xf9 (11111001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 725000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xf9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 725000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 725000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 1/10 normal sequences: tx_data=0xf9, start=1, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 785000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 785000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 785000: reporter [SLV] RX_REG=0xf9 (11111001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 865000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 865000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11110011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 865000: reporter [SLV] RX_REG=0xf3 (11110011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 945000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 945000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11100111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 945000: reporter [SLV] RX_REG=0xe7 (11100111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1025000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1025000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11001110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1025000: reporter [SLV] RX_REG=0xce (11001110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1105000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1105000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10011101
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1105000: reporter [SLV] RX_REG=0x9d (10011101), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1185000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1185000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x111011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1185000: reporter [SLV] RX_REG=0x3b (00111011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1265000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1265000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1110111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1265000: reporter [SLV] RX_REG=0x77 (01110111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1345000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1345000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11101111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1345000: reporter [SLV] RX_REG=0xef (11101111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 1385000: reporter [SLV-RLD] RX_REG=0xde (11011110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1405000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xde
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1405000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11011110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 1405000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 2/10 normal sequences: tx_data=0xde, start=1, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1465000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1465000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11011110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1465000: reporter [SLV] RX_REG=0xde (11011110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1545000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1545000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10111101
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1545000: reporter [SLV] RX_REG=0xbd (10111101), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1625000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1625000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1111011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1625000: reporter [SLV] RX_REG=0x7b (01111011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1705000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1705000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11110110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1705000: reporter [SLV] RX_REG=0xf6 (11110110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1785000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1785000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11101101
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1785000: reporter [SLV] RX_REG=0xed (11101101), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1865000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1865000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11011011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1865000: reporter [SLV] RX_REG=0xdb (11011011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 1945000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 1945000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10110111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 1945000: reporter [SLV] RX_REG=0xb7 (10110111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2025000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2025000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1101110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2025000: reporter [SLV] RX_REG=0x6e (01101110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 2065000: reporter [SLV-RLD] RX_REG=0xdc (11011100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2085000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xdc
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2085000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11011100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 2085000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 3/10 normal sequences: tx_data=0xdc, start=1, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2145000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2145000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11011100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2145000: reporter [SLV] RX_REG=0xdc (11011100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2225000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2225000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10111001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2225000: reporter [SLV] RX_REG=0xb9 (10111001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2305000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2305000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1110011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2305000: reporter [SLV] RX_REG=0x73 (01110011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2385000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2385000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11100111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2385000: reporter [SLV] RX_REG=0xe7 (11100111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2465000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2465000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11001111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2465000: reporter [SLV] RX_REG=0xcf (11001111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2545000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2545000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10011111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2545000: reporter [SLV] RX_REG=0x9f (10011111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2625000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2625000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x111111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2625000: reporter [SLV] RX_REG=0x3f (00111111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2705000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2705000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1111111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2705000: reporter [SLV] RX_REG=0x7f (01111111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 2745000: reporter [SLV-RLD] RX_REG=0xff (11111111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2765000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xff
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2765000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 2765000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 4/10 normal sequences: tx_data=0xff, start=0, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2825000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2825000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2825000: reporter [SLV] RX_REG=0xff (11111111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2905000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2905000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2905000: reporter [SLV] RX_REG=0xff (11111111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 2985000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 2985000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 2985000: reporter [SLV] RX_REG=0xff (11111111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3065000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3065000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3065000: reporter [SLV] RX_REG=0xfe (11111110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3145000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3145000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111101
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3145000: reporter [SLV] RX_REG=0xfd (11111101), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3225000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3225000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11111011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3225000: reporter [SLV] RX_REG=0xfb (11111011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3305000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3305000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11110110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3305000: reporter [SLV] RX_REG=0xf6 (11110110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3385000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3385000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11101100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3385000: reporter [SLV] RX_REG=0xec (11101100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 3425000: reporter [SLV-RLD] RX_REG=0xd9 (11011001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3445000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xd9
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3445000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11011001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 3445000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 5/10 normal sequences: tx_data=0xd9, start=0, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3505000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3505000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11011001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3505000: reporter [SLV] RX_REG=0xd9 (11011001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3585000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3585000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10110010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3585000: reporter [SLV] RX_REG=0xb2 (10110010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3665000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3665000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1100100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3665000: reporter [SLV] RX_REG=0x64 (01100100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3745000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3745000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11001001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3745000: reporter [SLV] RX_REG=0xc9 (11001001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3825000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3825000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10010011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3825000: reporter [SLV] RX_REG=0x93 (10010011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3905000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3905000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x100111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3905000: reporter [SLV] RX_REG=0x27 (00100111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 3985000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 3985000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1001111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 3985000: reporter [SLV] RX_REG=0x4f (01001111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4065000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4065000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10011111
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4065000: reporter [SLV] RX_REG=0x9f (10011111), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 4105000: reporter [SLV-RLD] RX_REG=0x3e (00111110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4125000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x3e
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4125000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x111110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 4125000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 6/10 normal sequences: tx_data=0x3e, start=1, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4185000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4185000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x111110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4185000: reporter [SLV] RX_REG=0x3e (00111110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4265000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4265000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1111100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4265000: reporter [SLV] RX_REG=0x7c (01111100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4345000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4345000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11111001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4345000: reporter [SLV] RX_REG=0xf9 (11111001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4425000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4425000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11110011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4425000: reporter [SLV] RX_REG=0xf3 (11110011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4505000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4505000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11100110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4505000: reporter [SLV] RX_REG=0xe6 (11100110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4585000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4585000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11001100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4585000: reporter [SLV] RX_REG=0xcc (11001100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4665000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4665000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10011000
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4665000: reporter [SLV] RX_REG=0x98 (10011000), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4745000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4745000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x110001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4745000: reporter [SLV] RX_REG=0x31 (00110001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 4785000: reporter [SLV-RLD] RX_REG=0x62 (01100010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4805000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x62
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4805000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1100010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 4805000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 7/10 normal sequences: tx_data=0x62, start=0, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4865000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4865000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1100010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4865000: reporter [SLV] RX_REG=0x62 (01100010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 4945000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 4945000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x11000100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 4945000: reporter [SLV] RX_REG=0xc4 (11000100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5025000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5025000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10001000
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5025000: reporter [SLV] RX_REG=0x88 (10001000), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5105000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5105000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5105000: reporter [SLV] RX_REG=0x11 (00010001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5185000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5185000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x100010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5185000: reporter [SLV] RX_REG=0x22 (00100010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5265000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5265000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1000100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5265000: reporter [SLV] RX_REG=0x44 (01000100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5345000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5345000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10001000
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5345000: reporter [SLV] RX_REG=0x88 (10001000), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5425000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5425000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5425000: reporter [SLV] RX_REG=0x11 (00010001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 5465000: reporter [SLV-RLD] RX_REG=0x22 (00100010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5485000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x22
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5485000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x100010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 5485000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 8/10 normal sequences: tx_data=0x22, start=1, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5545000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5545000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x100010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5545000: reporter [SLV] RX_REG=0x22 (00100010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5625000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5625000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1000100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5625000: reporter [SLV] RX_REG=0x44 (01000100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5705000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5705000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10001001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5705000: reporter [SLV] RX_REG=0x89 (10001001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5785000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5785000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5785000: reporter [SLV] RX_REG=0x12 (00010010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5865000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5865000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x100101
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5865000: reporter [SLV] RX_REG=0x25 (00100101), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 5945000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 5945000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1001010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 5945000: reporter [SLV] RX_REG=0x4a (01001010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6025000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6025000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x10010100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6025000: reporter [SLV] RX_REG=0x94 (10010100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6105000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6105000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x101000
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6105000: reporter [SLV] RX_REG=0x28 (00101000), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 6145000: reporter [SLV-RLD] RX_REG=0x51 (01010001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6165000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0x51
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6165000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x0, Got = 0x1010001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 6165000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 9/10 normal sequences: tx_data=0x51, start=0, Next sequence after 0
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6225000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6225000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1010001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6225000: reporter [SLV] RX_REG=0x51 (01010001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6305000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6305000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10100011
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6305000: reporter [SLV] RX_REG=0xa3 (10100011), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6385000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6385000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1000110
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6385000: reporter [SLV] RX_REG=0x46 (01000110), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6465000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6465000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10001101
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6465000: reporter [SLV] RX_REG=0x8d (10001101), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6545000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6545000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6545000: reporter [SLV] RX_REG=0x1a (00011010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6625000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6625000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x110100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6625000: reporter [SLV] RX_REG=0x34 (00110100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6705000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6705000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x1101001
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6705000: reporter [SLV] RX_REG=0x69 (01101001), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6785000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6785000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x11010010
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(63) @ 6785000: reporter [SLV] RX_REG=0xd2 (11010010), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_tb.sv(52) @ 6825000: reporter [SLV-RLD] RX_REG=0xa4 (10100100), TX_REG=0x00 (00000000)
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(49) @ 6845000: uvm_test_top.env.scb [SB] Start asserted — new transfer: tx_data = 0xa4
+UVM_ERROR /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_scb.sv(56) @ 6845000: uvm_test_top.env.scb [SB] Mismatch: Expected = 0x1, Got = 0x10100100
+UVM_INFO /home/user08/training/ww04/SV/uvm_zw/spi/design/spi_seq.sv(35) @ 6845000: uvm_test_top.env.agt.sqr@@seq [spi_seq] Sent 10/10 normal sequences: tx_data=0xa4, start=0, Next sequence after 0
+UVM_INFO /home/synopsys/vcs/W-2024.09-SP2/etc/uvm-ieee-2020-2.0/base/uvm_report_server.svh(945) @ 6845000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  194
+UVM_WARNING :    0
+UVM_ERROR :   89
+UVM_FATAL :    0
+** Report counts by id
+[RNTST]     1
+[SB]   180
+[SLV]    80
+[SLV-RLD]    10
+[TEST]     1
+[spi_seq]    11
+
+$finish called from file "/home/synopsys/vcs/W-2024.09-SP2/etc/uvm-ieee-2020-2.0/base/uvm_root.svh", line 599.
+>>>>>>>> SIM TIME END  : 6845000
+$finish at simulation time              6845000
+
+=========== Generating Assertion Summary ==========
+
+"vcs_paramclassrepository.\spi_seq::body .unnamed$$_1", 10 attempts, 10 successes, 0 failures, 0 incompletes
+Summary: 1 assertions, 1 with attempts, 0 with failures
+
+===========     End Assertion Summary    ==========
+
+
+---------------------------------------------------------------------------
+VCS Coverage Metrics: during simulation line, cond, FSM, branch, tgl was monitored
+---------------------------------------------------------------------------
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 6845000 ps
+CPU Time:      0.320 seconds;       Data structure size:   0.7Mb
+Mon Aug 18 15:30:02 2025
